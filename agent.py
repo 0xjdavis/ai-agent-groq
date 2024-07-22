@@ -62,14 +62,9 @@ if __name__ == '__main__':
 
     
     # AGENT TOPS
-    agentops.init(agent_tops_key)
+    agentops.init(agent_ops_key)
 
 
-
-
-
-
-  
     USER_ID = "facebook_admin"
 
     # Set up OpenAI API key
