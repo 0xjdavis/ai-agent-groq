@@ -60,8 +60,8 @@ if __name__ == '__main__':
     print("Started!")
     # AGENT OPS
     agent_ops_key = st.secrets['agent_ops_key']
-    agentops.start_session(agent_ops_key)
-    agentops.end_session(end_state="Success")
+    session.start_session(agent_ops_key)
+    session.end_session(end_state="Success")
 
     USER_ID = "facebook_admin"
 
