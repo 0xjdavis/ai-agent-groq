@@ -4,7 +4,12 @@ import agentops, os
 from multion.client import MultiOn
 from mem0 import Memory
 
-@agentops.record_function('llm response')
+@agentops.record_function('llm response') 
+# AGENT OPS
+agent_ops_key = st.secrets['agent_ops_key']
+agentops.start_session()
+agentops.end_session(end_state="Success")
+    
 def fetch_response(client, text):
     chat_completion = client.chat.completions.create(
          
@@ -60,12 +65,6 @@ if __name__ == '__main__':
     print("started !!")
 
 
-    
-    # AGENT OPS
-    agent_ops_key = st.secrets['agent_ops_key']
-    session_1 = agentops.init(agent_ops_key)
-    session_2 = agentops.start_session()
-    agentops.end_session(end_state="Success")
 
 
     USER_ID = "facebook_admin"
