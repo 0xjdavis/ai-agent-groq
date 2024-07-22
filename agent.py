@@ -62,7 +62,7 @@ if __name__ == '__main__':
 
     
     # AGENT OPS
-    os.environ['agent_ops_key'] = st.secrets['agent_ops_key']
+    agent_ops_key = st.secrets['agent_ops_key']
     agentops.init(agent_ops_key) 
 
 
@@ -108,7 +108,7 @@ if __name__ == '__main__':
         text = st.text_area('Enter any Network configuration or security rule code:', 'Enter any Network configuration ?')
         submitted = st.form_submit_button('Submit')
         client = Groq(
-            api_key= st.secrets['groq_api_key'],
+            api_key= st.secrets['groq_key'],
         )
         # Fetch llm response
         response = fetch_response(client, text)
