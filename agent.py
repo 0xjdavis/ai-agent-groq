@@ -4,30 +4,62 @@ import agentops, os
 from multion.client import MultiOn
 from mem0 import Memory
 
-@app.get("/completion")
-def completion():
 
-    session = agentops.start_session()
+@agentops.record_function('llm response')
+def fetch_response(client, text):
+    chat_completion = client.chat.completions.create(
+        agentops.start_session()
+        messages=[
+            # Set an optional system message. This sets the behavior of the
+            # assistant and can be used to provide specific instructions for
+            # how it should behave throughout the conversation.
+            {
+                "role": "system",
+                "content": "you are a network security agent. when a user enters the any network commands to configure network rules you need to check if it is invalid and highlight text invalid it with red color, also provide suggestion how to optimize it and update it to make it more concrete and better. follow the instruction for output: 1. Provide info on what is wrong in network rules command. 2. suggest in few command suggestion how to improve it. 3. do a peer review how those network rules are used best way in top companies creating a table comparision.4. Add some examples how rule can be improved  5. Generate some flow chart to explain flow to user. 6. if the user provides any as source or destination then suggest recommedation to optimize it with examples. 7. if user provide multiple ips in source and destination then try to add them in common subnet 8. Create a list of 20 penetration testing url and sub domain urls that could be used to test the network rule. 9. apply all url and generate the table report to indicate how many of them are allowed after the network rule is updated. 10. suggest how rules can be optimized so that no pentration testing url can be allowed."
+            },
+            # Set a user message for the assistant to respond to.
+            {
+                "role": "user",
+                "content": f'user input is {text}',
+            }
+        ],
 
-    messages = [{"role": "user", "content": "Hello"}]
-    response = session.patch(openai.chat.completions.create)(
-        model="gpt-3.5-turbo",
-        messages=messages,
-        temperature=0.5,
+        # The language model which will generate the completion.
+        model="llama3-8b-8192",
+
+        #
+        # Optional parameters
+        #
+
+        # Controls randomness: lowering results in less random completions.
+        # As the temperature approaches zero, the model will become deterministic
+        # and repetitive.
+        temperature=0.3,
+
+        # The maximum number of tokens to generate. Requests can use up to
+        # 32,768 tokens shared between prompt and completion.
+        max_tokens=10000,
+
+        # Controls diversity via nucleus sampling: 0.5 means half of all
+        # likelihood-weighted options are considered.
+        top_p=1,
+
+        # A stop sequence is a predefined or user-specified text string that
+        # signals an AI to stop generating content, ensuring its responses
+        # remain focused and concise. Examples include punctuation marks and
+        # markers like "[end]".
+        stop=None,
+
+        # If set, partial message deltas will be sent.
+        stream=False,
+
+        
+        agentops.end_session(end_state='Success')
     )
 
-    session.record(
-        ActionEvent(
-            action_type="Agent says hello",
-            params=messages,
-            returns=str(response.choices[0].message.content),
-        ),
-    )
-
-    session.end_session(end_state="Success")
-
-    return {"response": response}
-
+    response = chat_completion.choices[0].message.content
+    return response
+    
 if __name__ == '__main__':
     print("Started!")
     
