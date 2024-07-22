@@ -7,9 +7,10 @@ from mem0 import Memory
 
 @agentops.record_function('llm response')
 def fetch_response(client, text):
+    agentops.start_session()
     chat_completion = client.chat.completions.create(
         
-        agentops.start_session()
+        
         messages=[
             # Set an optional system message. This sets the behavior of the
             # assistant and can be used to provide specific instructions for
