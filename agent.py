@@ -69,7 +69,7 @@ if __name__ == '__main__':
     USER_ID = "facebook_admin"
 
     # Set up OpenAI API key
-    os.environ['OPENAI_API_KEY'] = st.secrets['open_ai_key']
+    OPEN_AI_KEY = st.secrets['open_ai_key']
 
 
     st.write("AI AGENT")
