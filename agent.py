@@ -61,16 +61,15 @@ if __name__ == '__main__':
 
 
     
-    # AGENT TOPS
-    
-    os.environ['agent_ops_key'] = agent_ops_key
-    agentops.init(agent_ops_key)
+    # AGENT OPS
+    os.environ['agent_ops_key'] = st.secrets['agent_ops_key']
+    agentops.init(agent_ops_key) 
 
 
     USER_ID = "facebook_admin"
 
     # Set up OpenAI API key
-    os.environ['OPENAI_API_KEY'] = open_ai_key
+    os.environ['OPENAI_API_KEY'] = st.secrets['open_ai_key']
 
 
     st.write("AI AGENT")
@@ -109,7 +108,7 @@ if __name__ == '__main__':
         text = st.text_area('Enter any Network configuration or security rule code:', 'Enter any Network configuration ?')
         submitted = st.form_submit_button('Submit')
         client = Groq(
-            api_key=groq_api_key,
+            api_key= st.secrets['groq_api_key'],
         )
         # Fetch llm response
         response = fetch_response(client, text)
@@ -117,7 +116,7 @@ if __name__ == '__main__':
         print(response)
         st.markdown(response)
 
-        multion = MultiOn(api_key=multi_on_key)
+        multion = MultiOn(api_key = st.secrets['multi_on_key'])
         browse = multion.browse(
             cmd="try to access the link and provide status as yes or no if you are able to access the link ",
             url="https://google.com"
