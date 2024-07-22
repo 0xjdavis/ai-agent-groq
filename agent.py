@@ -63,7 +63,8 @@ if __name__ == '__main__':
     
     # AGENT OPS
     agent_ops_key = st.secrets['agent_ops_key']
-    agentops.init(agent_ops_key)
+    session_1 = agentops.init(agent_ops_key)
+    session_2 = agentops.start_session()
     agentops.end_session(end_state="Success")
 
 
