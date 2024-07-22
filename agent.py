@@ -7,7 +7,7 @@ from mem0 import Memory
 @agentops.record_function('llm response') 
 # AGENT OPS
 agent_ops_key = st.secrets['agent_ops_key']
-agentops.start_session()
+agentops.start_session(agent_ops_key)
 agentops.end_session(end_state="Success")
     
 def fetch_response(client, text):
