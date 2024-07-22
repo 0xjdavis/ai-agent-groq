@@ -5,8 +5,6 @@ from multion.client import MultiOn
 from mem0 import Memory
 
 @agentops.record_function('llm response')
-session_1 = agentops.init()
-session_2 = agentops.start_session()
 def fetch_response(client, text):
     chat_completion = client.chat.completions.create(
          
