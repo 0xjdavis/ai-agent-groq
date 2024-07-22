@@ -4,6 +4,5 @@ streamlit
 groq
 openai 
 agentops
-# os
-multion.client
-mem0
+multion
+mem0ai
