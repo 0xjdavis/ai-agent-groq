@@ -62,6 +62,8 @@ if __name__ == '__main__':
 
     
     # AGENT TOPS
+    
+    os.environ['agent_ops_key'] = agent_ops_key
     agentops.init(agent_ops_key)
 
 
