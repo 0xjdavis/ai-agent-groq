@@ -5,9 +5,11 @@ from multion.client import MultiOn
 from mem0 import Memory
 
 @agentops.record_function('llm response')
+session_1 = agentops.init()
+session_2 = agentops.start_session()
 def fetch_response(client, text):
     chat_completion = client.chat.completions.create(
-        # PARAMETERS
+         
         messages=[
             # Set an optional system message. This sets the behavior of the
             # assistant and can be used to provide specific instructions for
@@ -37,7 +39,7 @@ def fetch_response(client, text):
 
         # The maximum number of tokens to generate. Requests can use up to
         # 32,768 tokens shared between prompt and completion.
-        max_tokens=10000,
+        max_tokens=100,
 
         # Controls diversity via nucleus sampling: 0.5 means half of all
         # likelihood-weighted options are considered.
@@ -63,7 +65,9 @@ if __name__ == '__main__':
     
     # AGENT OPS
     agent_ops_key = st.secrets['agent_ops_key']
-    agentops.init(agent_ops_key) 
+    session_1 = agentops.init(agent_ops_key) 
+     
+    session_2 = agentops.start_session()
 
 
     USER_ID = "facebook_admin"
@@ -123,9 +127,9 @@ if __name__ == '__main__':
         )
 
         st.write("""
-          #### Browse response from multion:"
+          #### Browse response from multi on:"
           """)
-        print("Browse response from multion:", browse)
+        print("Browse response from multi on:", browse)
         st.markdown(browse)
 
         print("Ended !!")
