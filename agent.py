@@ -9,8 +9,6 @@ from mem0 import Memory
 def fetch_response(client, text):
     agentops.start_session()
     chat_completion = client.chat.completions.create(
-        
-        
         messages=[
             # Set an optional system message. This sets the behavior of the
             # assistant and can be used to provide specific instructions for
@@ -28,10 +26,6 @@ def fetch_response(client, text):
 
         # The language model which will generate the completion.
         model="llama3-8b-8192",
-
-        #
-        # Optional parameters
-        #
 
         # Controls randomness: lowering results in less random completions.
         # As the temperature approaches zero, the model will become deterministic
@@ -56,7 +50,7 @@ def fetch_response(client, text):
         stream=False,
 
         
-        agentops.end_session(end_state='Success')
+        agentops.end_session(end_state='Success'),
     )
 
     response = chat_completion.choices[0].message.content
