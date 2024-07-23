@@ -48,10 +48,10 @@ def fetch_response(client, text):
 
         # If set, partial message deltas will be sent.
         stream=False,
+    )
 
         
-        agentops.end_session(end_state='Success'),
-    )
+    agentops.end_session(end_state='Success')
 
     response = chat_completion.choices[0].message.content
     return response
