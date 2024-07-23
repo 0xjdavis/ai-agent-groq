@@ -4,8 +4,7 @@ import agentops, os
 from multion.client import MultiOn
 from mem0 import Memory
 
-
-@agentops.record_function('llm response')
+@agentops.session.record_function('llm response')
 def fetch_response(client, text):
     agentops.start_session()
     chat_completion = client.chat.completions.create(
