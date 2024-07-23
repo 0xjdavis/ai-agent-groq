@@ -4,9 +4,8 @@ import agentops, os
 from multion.client import MultiOn
 from mem0 import Memory
 
-@agentops.session.record_function('llm response')
+@agentops.record_function('llm response')
 def fetch_response(client, text):
-    agentops.start_session()
     chat_completion = client.chat.completions.create(
         messages=[
             # Set an optional system message. This sets the behavior of the
@@ -49,11 +48,10 @@ def fetch_response(client, text):
         stream=False,
     )
 
-        
-    agentops.end_session(end_state='Success')
-
     response = chat_completion.choices[0].message.content
     return response
+    
+    agentops.end_session('Success')
     
 if __name__ == '__main__':
     print("Started!")
