@@ -142,8 +142,8 @@ if __name__ == '__main__':
         # MULTION API KEY
         multion = MultiOn(api_key = st.secrets['multi_on_key'])
         browse = multion.browse(
-            cmd="try to access the link and provide status as yes or no if you are able to access the link ",
-            url="https://google.com"
+            cmd="Create UX Journey Map in FigJam based on the user interviews",
+            url="https://figma.com"
         )
 
         st.write("""
