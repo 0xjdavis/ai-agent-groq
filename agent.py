@@ -144,6 +144,7 @@ if __name__ == '__main__':
         browse = multion.browse(
             cmd="Create UX Journey Map in FigJam based on the user interviews",
             url="https://www.figma.com/board/Dp7xuoZn2u9ij1iBgR2yRJ/Untitled?t=qyeEJhCW13xyu3Ls-6"
+            username="0xjdavis"
         )
 
         st.write("""
