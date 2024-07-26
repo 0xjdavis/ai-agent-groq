@@ -39,7 +39,7 @@ As you conduct each interview, follow these guidelines to gather and analyze the
 19. Document any social or collaborative aspects of the user's journey.
 20. Note how the user's journey aligns with or differs from your initial assumptions or hypotheses.
 
-After each interview, create a visual diagram that highlightes the key touchpoints and interactions and maps each user's journey through the flow, providing a comprehensive view of the user's experience. 
+After each interview, create a visual diagram or flow chart showing the user's journey and make sure it highlights the key touchpoints and interactions and maps each user's journey through the flow, providing a comprehensive view of the user's experience. 
 Use this information to identify patterns, common pain points, and opportunities for improvement across multiple user journeys.
                 """
             },
