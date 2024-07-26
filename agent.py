@@ -4,47 +4,48 @@ import agentops, os
 from multion.client import MultiOn
 from mem0 import Memory
 
+
+# AGENT OPS CODE FOR RECORDING RESPONSES FROM THE LLM
 @agentops.record_function('llm response')
 def fetch_response(client, text):
     chat_completion = client.chat.completions.create(
         messages=[
-            # Set an optional system message. This sets the behavior of the
-            # assistant and can be used to provide specific instructions for
-            # how it should behave throughout the conversation.
+            # SYSTEM MESSAGE 
+            # Define the behavior of the Agent for the conversation.
             {
                 "role": "system",
                 "content": "You are a UX Design consultant specializing in interface improvements for digital products. When a user submits a mockup or wireframe of a user interface, You need to analyze it for usability issues, highlight problematic areas, and provide suggestions on how to optimize and improve the design to enhance user experience. Follow these instructions for your output: 1. Identify and explain usability issues in the submitted design. 2. Offer 3-5 specific suggestions for improving the design. 3. Conduct a brief competitive analysis, comparing the design to similar features in top products, presented in a table format. 4. Provide examples of how specific elements could be improved, with before and after comparisons. 5. Create a user flow diagram to illustrate the ideal interaction path. 6. If the design uses generic placeholders (e.g. Lorem ipsum), recommend ways to make the content more realistic and user-centric. 7. If multiple, disconnected elements are present, suggest ways to organize them for better visual hierarchy. 8. Generate a list of 10-15 usability heuristics that could be used to evaluate the design. 9. Apply these heuristics to the design and create a table showing how well it meets each criterion. 10.Suggest how the design can be further optimized to address any remaining usability concerns identified in the heuristic evaluation."
             },
-            # Set a user message for the assistant to respond to.
+            # USER MESSAGE FOR THE AGENT TO RESPOND TO
             {
                 "role": "user",
                 "content": f'user input is {text}',
             }
         ],
 
-        # The language model which will generate the completion.
+        # LLM 
         model="llama3-8b-8192",
 
-        # Controls randomness: lowering results in less random completions.
-        # As the temperature approaches zero, the model will become deterministic
-        # and repetitive.
+        # TEMPERATURE
+        # As it approaches zero, the model will become deterministic & repetitive.
         temperature=0.3,
 
-        # The maximum number of tokens to generate. Requests can use up to
+        # MAXIMUM TOKENS
         # 32,768 tokens shared between prompt and completion.
-        max_tokens=10000,
+        max_tokens=1000,
 
-        # Controls diversity via nucleus sampling: 0.5 means half of all
-        # likelihood-weighted options are considered.
+        # DIVERSITY
+        # Nucleus sampling: 0.5 means half of all weighted options are considered.
         top_p=1,
 
-        # A stop sequence is a predefined or user-specified text string that
-        # signals an AI to stop generating content, ensuring its responses
-        # remain focused and concise. Examples include punctuation marks and
-        # markers like "[end]".
+        # STOP SEQUENCE
+        # User-specified text string that signals an AI to stop generating content, 
+        # ensuring its responses remain focused and concise. Include punctuation marks
+        # and markers like "[end]".
         stop=None,
 
-        # If set, partial message deltas will be sent.
+        # STREAM
+        # If set to True, partial message deltas will be sent.
         stream=False,
     )
 
@@ -56,22 +57,22 @@ def fetch_response(client, text):
 if __name__ == '__main__':
     print("Started!")
     
-    # AGENT OPS
+    # AGENT OPS API KEY
     agent_ops_key = st.secrets['agent_ops_key'] 
 
-    USER_ID = "facebook_admin"
+    USER_ID = "Researcher" #facebook_admin
 
-    # Set up OpenAI API key
+    # OPENAI API KEY
     OPEN_AI_KEY = st.secrets['open_ai_key']
 
-
+    # CONTENT
     st.write("AI AGENT")
-    st.caption("Network Security")
+    st.caption("Utilizing AgentOps for recording.")
 
     # st.image("image.png")
 
     st.write("""
-    ### Network Cybersecurity Agent that helps you define better secure network rules.*
+    ### AI Agent that helps you complete a defined task list.
     """)
 
     # Initialize Mem0
@@ -80,7 +81,7 @@ if __name__ == '__main__':
     # Define user data
     USER_DATA = """
     About me
-    - I'm facebook network admin, i define network policy on acl.
+    - I'm researcher, I discover order in what appears to be chaos.
     """
 
     # Add Mem0
@@ -97,6 +98,8 @@ if __name__ == '__main__':
     # print("User data added to memory.")
 
 
+
+    # USE GROQ TO COLLECT FORM DATA AND FETCH A RESPONSE
     with st.form('my_form'):
         text = st.text_area('Enter any Network configuration or security rule code:', 'Enter any Network configuration ?')
         submitted = st.form_submit_button('Submit')
@@ -109,6 +112,7 @@ if __name__ == '__main__':
         print(response)
         st.markdown(response)
 
+        # MULTION API KEY
         multion = MultiOn(api_key = st.secrets['multi_on_key'])
         browse = multion.browse(
             cmd="try to access the link and provide status as yes or no if you are able to access the link ",
@@ -116,9 +120,9 @@ if __name__ == '__main__':
         )
 
         st.write("""
-          #### Browse response from multi on:"
+          #### Browse response from MultiOn:"
           """)
-        print("Browse response from multi on:", browse)
+        print("Browse response from MultiOn:", browse)
         st.markdown(browse)
 
         print("Ended !!")
