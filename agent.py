@@ -143,7 +143,6 @@ if __name__ == '__main__':
         multion = MultiOn(api_key = st.secrets['multi_on_key'])
         # Browse internet
         browse = multion.browse(
-            username="0xjdavis"
             cmd="Go to Figma, and create UX Journey Map in FigJam based on the user interviews",
             url="https://www.figma.com/board/Dp7xuoZn2u9ij1iBgR2yRJ/Untitled?t=qyeEJhCW13xyu3Ls-6"
         )
