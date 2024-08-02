@@ -79,7 +79,7 @@ Use this information to identify patterns, common pain points, and opportunities
     response = chat_completion.choices[0].message.content
     return response
     
-    agentops.end_session('Success')
+agentops.end_session('Success')
     
 if __name__ == '__main__':
     print("Started!")
