@@ -93,13 +93,10 @@ if __name__ == '__main__':
     OPEN_AI_KEY = st.secrets['open_ai_key']
 
     # CONTENT
-    st.write("AI AGENT")
+    st.header("AI AGENT")
     st.caption("Utilizing AgentOps for recording.")
 
-    # st.image("image.png")
-
-    st.write("""
-    ### AI Agent that helps you complete a defined task list.
+    st.write("This is an AI Agent utilizing Groq, AgentOps, OpenAI, MultiOn, and Mem0 that helps you complete a defined task list.
     """)
 
     # Initialize Mem0
