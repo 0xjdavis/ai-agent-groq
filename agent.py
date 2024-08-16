@@ -91,9 +91,17 @@ if __name__ == '__main__':
     # OPENAI API KEY
     OPEN_AI_KEY = st.secrets['open_ai_key']
 
+    # Setting page layout
+    st.set_page_config(
+        page_title="OpenAI DALL-E Text-to-Image Generation",
+        page_icon="✨",
+        layout="centered",
+        initial_sidebar_state="expanded"
+    )
+
     # Sidebar for API Key and User Info
     st.sidebar.header("About App")
-    st.sidebar.write("This is an AI Agent that uses Groq with the llama3-8b-8192 model which completes a workflow using AgentOps and MultiOn created by 0xjdavis")
+    st.sidebar.markdown('This is an AI Agent that uses Groq with the llama3-8b-8192 model which completes a workflow using AgentOps and MultiOn created by <a href="https://ai.jdavis.xyz" target="_blank">0xjdavis</a>.', unsafe_allow_html=True)
 
     # Calendly
     st.sidebar.markdown("""
@@ -113,9 +121,7 @@ if __name__ == '__main__':
     st.sidebar.caption("©️ Copyright 2024 J. Davis")
 
     # CONTENT
-    st.header("AI AGENT")
-    st.caption("Utilizing AgentOps for recording.")
-
+    st.header("AI Agent")
     st.write("This is an AI Agent utilizing Groq, AgentOps, OpenAI, MultiOn, and Mem0 that helps you complete a defined task list.")
 
     # Initialize Mem0
