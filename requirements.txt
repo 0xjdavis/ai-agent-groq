@@ -6,3 +6,4 @@ openai
 agentops
 multion
 mem0ai
+pyyaml
