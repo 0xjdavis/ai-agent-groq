@@ -122,7 +122,7 @@ if __name__ == '__main__':
 
     # CONTENT
     st.header("AI Agent")
-    st.write("This is an AI Agent utilizing Groq, AgentOps, OpenAI, MultiOn, and Mem0 that helps you complete a defined task list.")
+    st.write("This is an AI Agent using Groq that helps you complete a defined workflow.")
 
     # Initialize Mem0
     # memory = Memory()
