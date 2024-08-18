@@ -93,7 +93,7 @@ if __name__ == '__main__':
 
     # Setting page layout
     st.set_page_config(
-        page_title="OpenAI DALL-E Text-to-Image Generation",
+        page_title="AI Agent",
         page_icon="✨",
         layout="centered",
         initial_sidebar_state="expanded"
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     st.sidebar.caption("©️ Copyright 2024 J. Davis")
 
     # CONTENT
-    st.header("AI Agent")
+    st.title("AI Agent")
     st.write("This is an AI Agent using Groq that helps you complete a defined workflow.")
 
     # Initialize Mem0
@@ -133,6 +133,7 @@ if __name__ == '__main__':
     - I'm researcher, I discover order in what appears to be chaos.
     """
 
+    # TODO 
     # Add Mem0
     #
     # command = "Find commands that I should know to configure network policy"
