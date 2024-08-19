@@ -123,14 +123,14 @@ You can add as much text as you want here!"""
             multion = MultiOn(api_key=st.secrets['multi_on_key'])
             # Browse internet
             browse = multion.browse(
-                cmd="Go to Figma, and create UX Journey Map in FigJam based on the user interviews",
+                cmd="Use the url to access the Figma FigJam board file. You have editing privelages to the file. Go to Figma, and create UX Journey Map in FigJam based on the user interviews",
                 url="https://www.figma.com/board/TTnCP5XuMHVn4wMjHfQKL1/Automation-Test?node-id=0-1&t=8OVEKUlwDzlAiG5x-0"
             )
 
             st.write("""
-            #### Browse response from MultiOn:
+            #### MultiOn:
             """)
-            print("Browse response from MultiOn:", browse)
+            print("Response:", browse)
             st.markdown(browse)
 
     print("Ended !!")
