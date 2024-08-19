@@ -148,10 +148,25 @@ if __name__ == '__main__':
     # print("User data added to memory.")
 
 
-
+    
+ 
     # USE GROQ TO COLLECT FORM DATA AND FETCH A RESPONSE
     with st.form('my_form'):
-        text = st.text_area('Enter your user interview transcripts', 'Enter your user interview transcripts.')
+        # PASTE EXAMPLE INTERVIEW
+        text_area = st.text_area("Enter your text here:", height=200)
+    
+        # Create a button
+        if st.button("Populate with Example Text"):
+            example_text = """This is an example text.
+    It demonstrates how to populate a text area
+    with multiple lines of text when a button is clicked.
+    
+    You can add as much text as you want here!"""
+            
+            # Update the text area with the example text
+            st.session_state.text_area = example_text
+        text = st.text_area("Enter your user interview transcripts", value=st.session_state.get("text_area", ""), height=200)
+
         submitted = st.form_submit_button('Submit')
         client = Groq(
             api_key= st.secrets['groq_key'],
