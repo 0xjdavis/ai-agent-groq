@@ -165,31 +165,32 @@ if __name__ == '__main__':
             
             # Update the text area with the example text
             st.session_state.text_area = example_text
-        text = st.text_area("Enter your user interview transcripts", value=st.session_state.get("text_area", ""), height=200)
+            text = st.text_area("Enter your user interview transcripts", value=st.session_state.get("text_area", ""), height=200)
 
-        submitted = st.form_submit_button('Submit')
-        client = Groq(
-            api_key= st.secrets['groq_key'],
-        )
-        # Fetch llm response
-        response = fetch_response(client, text)
-
-        print(response)
-        st.markdown(response)
-
-        # MULTION API KEY
-        multion = MultiOn(api_key = st.secrets['multi_on_key'])
-        # Browse internet
-        browse = multion.browse(
-            cmd="Go to Figma, and create UX Journey Map in FigJam based on the user interviews",
-            # url="https://www.figma.com/board/Dp7xuoZn2u9ij1iBgR2yRJ/Untitled?t=qyeEJhCW13xyu3Ls-6"
-            url="https://www.figma.com/board/TTnCP5XuMHVn4wMjHfQKL1/Automation-Test?node-id=0-1&t=8OVEKUlwDzlAiG5x-0"
-        )
-
-        st.write("""
-          #### Browse response from MultiOn:
-          """)
-        print("Browse response from MultiOn:", browse)
-        st.markdown(browse)
-
-        print("Ended !!")
+            submitted = st.form_submit_button('Submit')
+            
+            client = Groq(
+                api_key= st.secrets['groq_key'],
+            )
+            # Fetch llm response
+            response = fetch_response(client, text)
+    
+            print(response)
+            st.markdown(response)
+    
+            # MULTION API KEY
+            multion = MultiOn(api_key = st.secrets['multi_on_key'])
+            # Browse internet
+            browse = multion.browse(
+                cmd="Go to Figma, and create UX Journey Map in FigJam based on the user interviews",
+                # url="https://www.figma.com/board/Dp7xuoZn2u9ij1iBgR2yRJ/Untitled?t=qyeEJhCW13xyu3Ls-6"
+                url="https://www.figma.com/board/TTnCP5XuMHVn4wMjHfQKL1/Automation-Test?node-id=0-1&t=8OVEKUlwDzlAiG5x-0"
+            )
+    
+            st.write("""
+              #### Browse response from MultiOn:
+              """)
+            print("Browse response from MultiOn:", browse)
+            st.markdown(browse)
+    
+            print("Ended !!")
