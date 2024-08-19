@@ -98,7 +98,7 @@ def main():
         st.session_state.text_area = ""
 
     # Create a button outside the form
-    if st.button("Populate with Example Text"):
+    if st.button("Paste Example Transcript"):
         example_text = """Interview 1
 
 Interviewer: Hi! Thanks for joining us today. We’re excited to hear your thoughts on the new Google Single Sign-On interface. Let’s dive right in. Can you start by describing your overall experience with the new SSO interface?
