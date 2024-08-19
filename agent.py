@@ -167,7 +167,8 @@ if __name__ == '__main__':
         # Browse internet
         browse = multion.browse(
             cmd="Go to Figma, and create UX Journey Map in FigJam based on the user interviews",
-            url="https://www.figma.com/board/Dp7xuoZn2u9ij1iBgR2yRJ/Untitled?t=qyeEJhCW13xyu3Ls-6"
+            # url="https://www.figma.com/board/Dp7xuoZn2u9ij1iBgR2yRJ/Untitled?t=qyeEJhCW13xyu3Ls-6"
+            url="https://www.figma.com/board/TTnCP5XuMHVn4wMjHfQKL1/Automation-Test?node-id=0-1&t=8OVEKUlwDzlAiG5x-0"
         )
 
         st.write("""
